@@ -3,6 +3,8 @@
 Aplicación local para administrar ventas contraentrega y gastos de un negocio de comercio electrónico, con cálculo de utilidad en tiempo real y reportes en PDF y Excel.
 
 > Proyecto de demostración. Todos los datos, nombres y cifras de ejemplo son ficticios.
+>
+> Está pensado para **despliegue local**: se ejecuta en tu propio equipo con `Iniciar Safetrics.bat` y no usa servicios externos.
 
 **Stack:** Node.js · Express · MongoDB (Mongoose) · React + Vite · PDFKit · ExcelJS.
 
@@ -20,7 +22,20 @@ npm run dev
 
 Abre `http://localhost:5173`. La API queda en `http://127.0.0.1:4000/api` (comprobación en `/api/salud`).
 
-En Windows también puedes usar `Iniciar Safetrics.bat`. Para cambiar la conexión copia `backend/.env.example` a `backend/.env`.
+### Despliegue local con el .bat (Windows)
+
+Haz doble clic en `Iniciar Safetrics.bat`. Comprueba que MongoDB esté activo, inicia solo los servidores que no estén corriendo (API y web) y abre la interfaz en el navegador. Mantén abiertas sus ventanas mientras uses la app; al cerrarlas se detienen los servidores. No instala Node.js ni MongoDB.
+
+### Configuración (.env)
+
+Los valores predeterminados funcionan sin configurar nada. Para cambiarlos, copia `backend/.env.example` como `backend/.env` y ajusta:
+
+| Variable | Ejemplo | Descripción |
+| --- | --- | --- |
+| `BACKEND_PORT` | `4000` | Puerto de la API |
+| `MONGO_URI` | `mongodb://127.0.0.1:27017/safetrics` | Conexión a MongoDB |
+
+El archivo `backend/.env` está en `.gitignore`; no subas credenciales reales.
 
 Pruebas del backend: `npm test --workspace=backend`.
 
